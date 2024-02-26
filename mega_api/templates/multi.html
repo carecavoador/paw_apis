@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block jogo %}
+<h3>Aqui estão os seus números da sorte:</h3>
+
+{% for jogo in jogos %}
+    <p>{{jogo}}</p>
+{% endfor %}
+
+{% endblock %}

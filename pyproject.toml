@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "paw_apis"
+version = "0.1.0"
+description = ""
+authors = ["Everton de Souza <e.rodrigo@outlook.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+flask = "^3.0.2"
+
+
+[tool.poetry.group.dev.dependencies]
+pylint = "^3.1.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

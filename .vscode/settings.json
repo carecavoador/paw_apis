@@ -1,0 +1,7 @@
+{
+    "pylint.path": [
+        ".venv/scritps/pylint"
+    ],
+    "python.analysis.autoImportCompletions": true,
+    "python.analysis.typeCheckingMode": "basic"
+}
