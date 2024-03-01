@@ -6,8 +6,8 @@ from pathlib import Path
 
 from validadores.utils import generate_texts_from_image_pdf
 
-ID_ESPESSURA = "Espessura do Clichê: "
 ID_CAMADA = "Impressão"
+ID_ESPESSURA = "Espessura do Clichê: "
 ID_FECHAMENTO = "Fechamento de Cilindro: "
 ID_COD_BARRAS = "Código de Barras: "
 
@@ -17,18 +17,21 @@ def scan_lines(text: str) -> dict:
 
     lines = text.splitlines()
     for line in lines:
+        # CAMADA --------------------------------------------------------------
         if line.startswith(ID_CAMADA):
             if "interna" in line.lower():
                 result["camada"] = "interna"
             elif "externa" in line.lower():
                 result["camada"] = "externa"
 
+        # ESPESSURA -----------------------------------------------------------
         if line.startswith(ID_ESPESSURA):
             if "1,14" in line:
                 result["espessura"] = 1.14
             elif "2,84" in line:
                 result["espessura"] = 2.84
 
+        # FECHAMENTO ----------------------------------------------------------
         if line.startswith(ID_FECHAMENTO):
             fechamento = line[len(ID_FECHAMENTO) :]
             try:
@@ -39,6 +42,7 @@ def scan_lines(text: str) -> dict:
             if fechamento:
                 result["fechamento"] = fechamento
 
+        # CÓDIGO DE BARRAS ----------------------------------------------------
         if line.startswith(ID_COD_BARRAS):
             cod_barras = line[len(ID_COD_BARRAS) :]
             if cod_barras:

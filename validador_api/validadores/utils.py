@@ -12,4 +12,5 @@ def generate_texts_from_image_pdf(pdf_path: Path, lang: str = "por") -> str:
     """Performs an OCR in a PDF file and returns it's text content."""
     image = convert_from_path(pdf_path, poppler_path=POPPLER)
     text: str = pytesseract.image_to_string(image[0], lang=lang)
+    print(text)
     return text

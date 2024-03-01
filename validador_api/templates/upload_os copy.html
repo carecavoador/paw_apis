@@ -11,14 +11,17 @@
     <form
         hx-encoding='multipart/form-data'
         hx-post='/extrair'
-        hx-target="#resultado">
-        <input type='file' name='ordem' style="margin-top: 20px; margin-bottom: 20px;">
+        hx-target="#resultado"
+        _='on htmx:xhr:progress(loaded, total) set #progress.value to (loaded/total)*100'>
+        <input type='file' name='ordem'>
+        <button>
+            Upload
+        </button>
+        <progress id='progress' value='0' max='100'></progress>
         <br>
         <label for="#id-cliente">Cliente:</label>
         <input type="text" name="cliente" id="id-cliente">
-        <br>
-        <button style="margin-top: 20px; margin-bottom: 20px;">Upload</button>
     </form>
-    <div id="resultado" style="font-size: 18px; width: fit-content; padding: 8px;"></div>
+    <div id="resultado"></div>
 </body>
 </html>

@@ -10,7 +10,7 @@ UPLOADS_FOLDER = Path(__file__).parent.joinpath("uploads")
 
 
 @app.route("/novo")
-def validador_inplac() -> str:
+def importar_os() -> str:
     return render_template("upload_os.html")
 
 
